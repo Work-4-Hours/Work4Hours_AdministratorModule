@@ -9,33 +9,51 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
     public class State
     {
         DataBase db = new DataBase();
-        private int Id;
-        private string Nombre_estado;
+        private int _id;
+        private string _nombre_estado;
 
-        public int GetId()
+        public int Id
         {
-            return Id;
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                _id = value;
+            }
+        }
+        public string Nombre_estado
+        {
+            get
+            {
+                return _nombre_estado;
+            }
+            set
+            {
+                _nombre_estado = value;
+            }
         }
 
-        public string GetNameState()
+        public IEnumerable<State> nameState()
         {
-            string sql = "SELECT nombrerol FROM roles";
-            Nombre_estado = db.ejecuteSQL(sql);
-            return Nombre_estado;
-        }
-
-        public IEnumerable<State> typeState()
-        {
-            string sql = "SELECT nombre_estado FROM estados";
+            string sql = "SELECT *  FROM estados";
             DataTable dt = db.getTable(sql);
 
-            List<State> clientList = new List<State>();
-            clientList = (from DataRow dr in dt.Rows
+            List<State> stateList = new List<State>();
+            stateList = (from DataRow dr in dt.Rows
                           select new State()
                           {
-                              Nombre_estado = dr["nombrE_ESTADO"].ToString(),
+                              Id = Convert.ToInt32(dr["id"]),
+                              Nombre_estado = dr["nombre_estado"].ToString(),
                           }).ToList();
-            return clientList;
+
+            /*string state = "";
+            foreach(DataRow dr in dt.Rows)
+            {
+                state = dr["nombre_estado"].ToString();
+            }*/
+            return stateList;
         }
     }        
 }
