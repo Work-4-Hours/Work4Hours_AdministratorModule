@@ -1,5 +1,4 @@
-﻿using Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,37 +10,35 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StateController : ControllerBase
+    public class UsersController : ControllerBase
     {
-        State st = new State();
-        // GET: api/<StateController>
+        // GET: api/<UsersController>
         [HttpGet]
-        public IEnumerable<State> Get()
+        public IEnumerable<string> Get()
         {
-            return st.nameState();
+            return new string[] { "value1", "value2" };
         }
 
-        // GET api/<StateController>/5
+        // GET api/<UsersController>/5
         [HttpGet("{id}")]
-
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<StateController>
+        // POST api/<UsersController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<StateController>/5
+        // PUT api/<UsersController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<StateController>/5
+        // DELETE api/<UsersController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
