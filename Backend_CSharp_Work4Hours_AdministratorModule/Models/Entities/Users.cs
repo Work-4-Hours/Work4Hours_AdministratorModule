@@ -9,7 +9,6 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
     public class Users
     {
         DataBase db = new DataBase();
-        State st = new State();
         private int _idusuario;
         private string _nombres;
         private string _apellidos;
@@ -17,7 +16,7 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
         private string _fotop;
 
         private State _estado;
-        private Roles _rol;
+        /*private Roles _rol;*/
 
         public int Idusuario
         {
@@ -49,10 +48,10 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
             set { _fotop = value; }
         }
 
-        public string Estado
+        public State Estado
         {
-            get { return st.Nombre_estado.ToString(); }
-            set { st.Nombre_estado = value; }
+            get { return _estado; }
+            set { _estado = value; }
         }
 
         public string listUsers()
