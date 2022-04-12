@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Nancy.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,7 +15,6 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models
         public DataBase()
         {
             connection = new MySqlConnection("datasource=bgeztpvckg0lxhnhjorg-mysql.services.clever-cloud.com; port=3306; username=urz9oici6joy6gog;password=dMxPboxqGHD4ik5Sv8mu;database=bgeztpvckg0lxhnhjorg;SSLMode=none");
-
         }
 
         public string ejecuteSQL(string sql)
@@ -45,26 +45,32 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models
 
             return result;
         }
-        
-        public DataTable getTable(string sql)
+
+        public string ConvertDataTabletoString(string sql)
         {
             DataTable dt = new DataTable();
-            try
+            using (connection)
             {
-                connection.Open();
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
-
-                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-
-                adapter.Fill(dt);
-                connection.Close();
-                adapter.Dispose();
+                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                    JavaScriptSerializer serializer = new JavaScriptSerializer();
+                    List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
+                    Dictionary<string, object> row;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        row = new Dictionary<string, object>();
+                        foreach (DataColumn col in dt.Columns)
+                        {
+                            row.Add(col.ColumnName, dr[col]);
+                        }
+                        rows.Add(row);
+                    }
+                    return serializer.Serialize(rows);
+                }
             }
-            catch
-            {
-                return null;
-            }
-            return dt;
         }
     }
 }

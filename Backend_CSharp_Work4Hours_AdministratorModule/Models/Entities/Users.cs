@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,58 +8,57 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
 {
     public class Users
     {
-        private int Idusuario;
-        private string Nombres;
-        private string Apellidos;
-        private string Correo;
-        private string Fotop;
+        DataBase db = new DataBase();
+        State st = new State();
+        private int _idusuario;
+        private string _nombres;
+        private string _apellidos;
+        private string _correo;
+        private string _fotop;
 
-        private Roles Rol;
-        private State Estado;
+        private State _estado;
+        private Roles _rol;
 
-        public int GetIdUsuario()
+        public int Idusuario
         {
-            return Idusuario;
+            get { return _idusuario; }
+            set { _idusuario = value; }
         }
 
-        public string GetName()
+        public string Nombres
         {
-            return Nombres;
+            get { return _nombres; }
+            set { _nombres = value; }
         }
 
-        public string GetLastName()
+        public string Apellidos
         {
-            return Apellidos;
+            get { return _apellidos; }
+            set { _apellidos = value; }
         }
 
-        public string GetEmail()
+        public string Correo
         {
-            return Correo;
+            get { return _correo; }
+            set { _correo = value; }
         }
 
-        public string GetPhoto()
+        public string Fotop
         {
-            return Fotop;
+            get { return _fotop; }
+            set { _fotop = value; }
         }
 
-        public string SetName(string name)
+        public string Estado
         {
-            return Nombres=name;
+            get { return st.Nombre_estado.ToString();}
+            set { st.Nombre_estado = value; }
         }
 
-        public string SetLastName(string lastName)
+        public string listUsers()
         {
-            return Apellidos = lastName;
-        }
-
-        public string SetEmail( string email)
-        {
-            return Correo = email;
-        }
-
-        public State GetState()
-        {
-            return Estado;
+            string sql = "SELECT u.idusuario, u.nombres, u.apellidos, u.correo, u.fotop, e.nombre_estado FROM usuarios u INNER JOIN estados e on u.estado=e.id";
+            return db.ConvertDataTabletoString(sql);
         }
     }
 }

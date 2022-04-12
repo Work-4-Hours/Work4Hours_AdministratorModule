@@ -18,20 +18,10 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
         DataBase db = new DataBase();
         // GET: api/<ReportsController>
         [HttpGet]
-        public IEnumerable<Reports> Get()
+        public string Get()
         {
             string sql = "SELECT idreporte,nombrereporte FROM reportes;";
-            DataTable dt = db.getTable(sql);
-
-            List<Reports> reportsList = new List<Reports>();
-            reportsList = (from DataRow dr in dt.Rows
-                          select new Reports()
-                          {
-                              Idreporte = Convert.ToInt32(dr["idreporte"]),
-                              NombreReporte = dr["nombrereporte"].ToString()
-                          }).ToList();
-            return reportsList;
+            return db.ConvertDataTabletoString(sql);
         }
-
     }
 }

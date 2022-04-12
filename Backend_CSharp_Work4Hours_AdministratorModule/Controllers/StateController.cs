@@ -16,7 +16,7 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
         State st = new State();
         // GET: api/<StateController>
         [HttpGet]
-        public IEnumerable<State> Get()
+        public string Get()
         {
             return st.nameState();
         }

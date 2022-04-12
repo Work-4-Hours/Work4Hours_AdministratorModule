@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,12 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+        Users user = new Users();
         // GET: api/<UsersController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public string Get()
         {
-            return new string[] { "value1", "value2" };
+            return user.listUsers();
         }
 
         // GET api/<UsersController>/5
