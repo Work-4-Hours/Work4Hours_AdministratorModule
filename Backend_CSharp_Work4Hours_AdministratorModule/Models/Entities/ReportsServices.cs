@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
 {
-    public class ReportsUsers
+    public class ReportsServices
     {
         DataBase db = new DataBase();
         private int _id;
         private Reports _idreporte;
-        private Users _idusuario;
+        private Services _idservicio;
 
         public int Id
         {
@@ -23,15 +23,16 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
             get { return _idreporte; }
             set { _idreporte = value; }
         }
-        public Users Idusuario
+
+        public Services Idservicio
         {
-            get { return _idusuario; }
-            set { _idusuario = value; }
+            get { return _idservicio; }
+            set { _idservicio = value; }
         }
 
-        public string reportsUsers(int idusuario)
+        public string reportsServices(int idservicio)
         {
-            string sql = $"select r.nombrereporte, count(ur.id) as cantidadReportes from reportes r inner join usuario_reportes ur on r.idreporte=ur.idreporte inner join usuarios u on ur.idusuario=u.idusuario where u.idusuario={idusuario} group by r.nombrereporte;";
+            string sql = $"select r.nombrereporte, count(sr.idreporte) as cantidadReportes from reportes r left join servicio_reportes sr on r.idreporte=sr.idreporte where sr.idservicio={idservicio} group by r.nombrereporte";
             return db.ConvertDataTabletoString(sql);
         }
     }
