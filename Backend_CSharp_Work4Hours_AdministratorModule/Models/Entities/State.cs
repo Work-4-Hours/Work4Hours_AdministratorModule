@@ -25,7 +25,7 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
 
         public string nameState()
         {
-            string sql = "SELECT *  FROM estados";
+            string sql = "SELECT nombre_estado  FROM estados";
             return db.ConvertDataTabletoString(sql);
         }
         /*string state = "";
