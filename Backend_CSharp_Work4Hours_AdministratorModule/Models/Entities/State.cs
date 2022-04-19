@@ -9,33 +9,29 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
     public class State
     {
         DataBase db = new DataBase();
-        private int Id;
-        private string Nombre_estado;
+        private int _id;
+        private string _nombre_estado;
 
-        public int GetId()
+        public int Id
         {
-            return Id;
+            get { return _id; }
+            set { _id = value; }
+        }
+        public string Nombre_estado
+        {
+            get { return _nombre_estado; }
+            set { _nombre_estado = value;}
         }
 
-        public string GetNameState()
+        public string nameState()
         {
-            string sql = "SELECT nombrerol FROM roles";
-            Nombre_estado = db.ejecuteSQL(sql);
-            return Nombre_estado;
+            string sql = "SELECT nombre_estado  FROM estados";
+            return db.ConvertDataTabletoString(sql);
         }
-
-        public IEnumerable<State> typeState()
+        /*string state = "";
+        foreach(DataRow dr in dt.Rows)
         {
-            string sql = "SELECT nombre_estado FROM estados";
-            DataTable dt = db.getTable(sql);
-
-            List<State> clientList = new List<State>();
-            clientList = (from DataRow dr in dt.Rows
-                          select new State()
-                          {
-                              Nombre_estado = dr["nombrE_ESTADO"].ToString(),
-                          }).ToList();
-            return clientList;
-        }
+            state = dr["nombre_estado"].ToString();
+        }*/
     }        
 }

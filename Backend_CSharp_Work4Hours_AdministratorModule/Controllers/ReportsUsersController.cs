@@ -11,36 +11,36 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class ReportsUsersController : ControllerBase
     {
-        Users user = new Users();
-        // GET: api/<UsersController>
+        ReportsUsers ru = new ReportsUsers();
+        // GET: api/<ReportsUsersController>
         [HttpGet]
-        public string Get()
+        public string Get([FromQuery] int idusuario)
         {
-            return user.listUsers();
+            return ru.reportsUsers(idusuario);
         }
 
-        // GET api/<UsersController>/5
-        [HttpGet("{id}")]
+        // GET api/<ReportsUsersController>/5
+        /*[HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
-        }
+        }*/
 
-        // POST api/<UsersController>
+        // POST api/<ReportsUsersController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<UsersController>/5
+        // PUT api/<ReportsUsersController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<UsersController>/5
+        // DELETE api/<ReportsUsersController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
