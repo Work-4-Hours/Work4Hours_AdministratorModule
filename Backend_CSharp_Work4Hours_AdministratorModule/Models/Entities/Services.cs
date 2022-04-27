@@ -54,7 +54,7 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
 
         public string listServices()
         {
-            string sql = "SELECT s.idservicio, s.nombre as nombreServicio, s.descripcion as descripcionServicio, u.idusuario, SUBSTRING_INDEX(u.nombres, ' ', 1) as nombreUsuario, u.fotop, e.nombre_estado as estado, a.descripcion as apelacion, count(sr.id) as cantidadReportes  FROM servicios s INNER JOIN estados e on s.estado=e.id  LEFT JOIN usuarios u on s.usuario=u.idusuario LEFT JOIN apelaciones a on s.apelacion=a.idapelacion LEFT JOIN servicio_reportes sr on sr.idservicio=s.idservicio group by s.idservicio ;";
+            string sql = "SELECT s.idservicio, s.nombre as nombreServicio, s.descripcion as descripcionServicio, u.idusuario, SUBSTRING_INDEX(u.nombres, ' ', 1) as nombreUsuario, u.fotop, e.nombre_estado as estado, case when a.descripcion is null then 'Aun no hay mensaje de apelación' else a.descripcion end as apelacion, count(sr.id) as cantidadReportes  FROM servicios s INNER JOIN estados e on s.estado = e.id  LEFT JOIN usuarios u on s.usuario = u.idusuarioLEFT JOIN apelaciones a on s.apelacion = a.idapelacion LEFT JOIN servicio_reportes sr on sr.idservicio = s.idservicio group by s.idservicio; ";
             return db.ConvertDataTabletoString(sql);
         }
     }
