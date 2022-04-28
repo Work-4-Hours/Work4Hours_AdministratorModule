@@ -59,5 +59,11 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
             string sql = "SELECT u.idusuario, u.nombres, u.apellidos, u.correo, u.fotop, count(ur.id) as cantidadReportes, e.nombre_estado FROM usuarios u INNER JOIN estados e on u.estado=e.id LEFT JOIN usuario_reportes ur on u.idusuario=ur.idusuario group by u.idusuario;";
             return db.ConvertDataTabletoString(sql);
         }
+
+        public string seacrhUsers(string searchWord)
+        {
+            string sql = $"select u.nombres, u.apellidos, u.correo, count(ur.id) as cantidadReportes,e.nombre_estado from usuarios u INNER JOIN estados e on u.estado = e.id INNER JOIN usuario_reportes ur ON u.idusuario=ur.idusuario where u.nombres like '%{searchWord}%' or u.apellidos like '%{searchWord}%' or u.correo like '%{searchWord}%' or ur.id like '%{searchWord}%' or e.nombre_estado like '%{searchWord}%'; ";
+            return db.ConvertDataTabletoString(sql);
+        }
     }
 }
