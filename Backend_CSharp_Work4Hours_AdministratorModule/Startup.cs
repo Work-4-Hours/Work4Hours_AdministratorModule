@@ -26,6 +26,11 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Backend_CSharp_Work4Hours_AdministratorModule", Version = "v1" });
+            });
 
             services.AddControllers(); 
             services.AddCors();
@@ -37,6 +42,8 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Backend_CSharp_Work4Hours_AdministratorModule v1"));
             }
             app.UseCors(builder => builder.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
 
