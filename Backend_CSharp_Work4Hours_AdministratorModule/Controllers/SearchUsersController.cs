@@ -23,9 +23,9 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
 
         // GET api/<SearchUsersController>
         [HttpGet("/busquedadGeneral")]
-        public string Get([FromQuery]string valor )
+        public string Get([FromQuery] int number )
         {
-            return user.seacrhUsers(valor);
+            return user.searchUsers(number);
         }
 
         // POST api/<SearchUsersController>
