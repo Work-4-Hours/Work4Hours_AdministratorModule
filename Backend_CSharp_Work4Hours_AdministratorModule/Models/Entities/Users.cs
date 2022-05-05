@@ -56,7 +56,7 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
 
         public string listUsers()
         {
-            string sql = "SELECT u.idusuario, u.nombres, u.apellidos, u.correo, u.fotop, count(ur.id) as cantidadReportes, e.nombre_estado FROM usuarios u INNER JOIN estados e on u.estado=e.id LEFT JOIN usuario_reportes ur on u.idusuario=ur.idusuario group by u.idusuario;";
+            string sql = "SELECT u.idusuario, u.nombres, u.apellidos, u.correo, u.fotop, count(ur.id) as cantidadReportes,e.id as idEstado, e.nombre_estado FROM usuarios u INNER JOIN estados e on u.estado = e.id LEFT JOIN usuario_reportes ur on u.idusuario = ur.idusuario group by u.idusuario;";
             return db.ConvertDataTabletoString(sql);
         }
 
