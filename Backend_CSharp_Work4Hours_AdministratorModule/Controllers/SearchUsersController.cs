@@ -21,17 +21,24 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/<SearchUsersController>
-        [HttpGet("/busquedadGeneral")]
-        public string Get([FromQuery] int number )
+        // GET api/<SearchUsersController>/5
+        [HttpGet("{id}")]
+        public string Get(int id)
         {
-            return user.searchUsers(number);
+            return "value";
         }
 
         // POST api/<SearchUsersController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public string Post([FromQuery] string value)
         {
+            return user.searchusers(value);
+        }
+
+        [HttpPost("/Pornumero")]
+        public string Postnumero([FromQuery] int value)
+        {
+            return user.searchUsers(value);
         }
 
         // PUT api/<SearchUsersController>/5
