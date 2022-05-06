@@ -66,10 +66,14 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
             return db.ConvertDataTabletoString(sql);
         }
         public string searchusers(string searchWord)
-        {
-            
-            string sql = $"select u.idusuario,u.nombres, u.apellidos, u.correo,count(ur.id) as cantidadReportes, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario where u.nombres like '{searchWord}%' or u.apellidos like '{searchWord}%' or u.correo like '{searchWord}%' or e.nombre_estado like '{searchWord}%' group by u.idusuario; ";
+        {   
+            string sql = $"select concat(u.nombres, ' ' ,u.apellidos) as nombreCompleto, u.correo,count(ur.id) as cantidadReportes, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario where concat(u.nombres, ' ', u.apellidos) like '{searchWord}%' or u.correo like '{searchWord}%' or e.nombre_estado like '{searchWord}%' group by u.idusuario; ";
             return db.ConvertDataTabletoString(sql);
         }
+
+        /*public string changeStateUsers()
+        {
+            return
+        }*/
     }
 }
