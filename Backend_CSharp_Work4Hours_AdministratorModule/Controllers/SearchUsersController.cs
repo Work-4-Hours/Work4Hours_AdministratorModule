@@ -36,9 +36,15 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
         }
 
         [HttpPost("/busquedaGeneralReportes")]
-        public string PostbReportes([FromQuery] int value)
+        public string PostReportes([FromQuery] int value)
         {
             return user.searchUsers(value);
+        }
+
+        [HttpPost("/busqueda/filter")]
+        public string PostFilter([FromQuery] int value, string word)
+        {
+            return user.searchUsersFilters(value, word);
         }
 
         // PUT api/<SearchUsersController>/5

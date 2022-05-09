@@ -71,9 +71,26 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
             return db.ConvertDataTabletoString(sql);
         }
 
-        /*public string changeStateUsers()
+        public string searchUsersFilters(int option, string searchWord)
         {
-            return
-        }*/
+            string sql = "";
+            if (option == 1)
+            {
+                sql = $"select u.nombres, u.apellidos, u.correo,count(ur.id) as cantidadReportes, e.id,e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario where e.nombre_estado like '{searchWord}%' group by u.idusuario";
+            }
+            else if (option == 2)
+            {
+                sql = $"select u.nombres, u.apellidos, u.correo,count(ur.id) as cantidadReportes, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario group by u.idusuario having count(ur.id) = {Convert.ToInt32(searchWord)};";
+            }
+            else if (option == 3)
+            {
+                sql = $"select u.nombres, u.apellidos, u.correo,count(ur.id) as cantidadReportes, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario where u.correo like '{searchWord}%' group by u.idusuario; ";
+            }
+            else if (option == 4)
+            {
+                sql = $"select u.idusuario,u.nombres, u.apellidos, u.correo,count(ur.id) as cantidadReportes, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario where concat(u.nombres, ' ', u.apellidos) like '%{searchWord}%' group by u.idusuario;";
+            }
+            return db.ConvertDataTabletoString(sql);
+        }
     }
 }
