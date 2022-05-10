@@ -1,4 +1,6 @@
-﻿namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
+﻿using System;
+
+namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
 {
     public class ChangeState
     {

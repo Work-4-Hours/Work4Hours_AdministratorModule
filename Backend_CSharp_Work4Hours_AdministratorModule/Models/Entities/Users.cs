@@ -95,14 +95,13 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
 
         public string suspencionUsers(List<ChangeState> array)
         {
-            for (int i = 0; i < array.Count; i++)
-            {
-                 foreach (item  in array)
-                {
-                    Console.WriteLine(item);
-                }
+            string sql = " ";
+            for (int i=0; i<array.Count;i++)
+            { 
+                sql = $"update usuarios set estado = {array[i].IdEstado} where idusuario = {array[i].IdUsuario};";
+                db.ejecuteSQL(sql);
             }
-            return " ";
+            return db.ejecuteSQL(sql);
         }
     }
 }
