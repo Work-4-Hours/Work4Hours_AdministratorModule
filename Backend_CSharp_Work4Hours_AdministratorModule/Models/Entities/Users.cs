@@ -56,18 +56,18 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
 
         public string listUsers()
         {
-            string sql = "SELECT u.idusuario, u.nombres, u.apellidos, u.correo, u.fotop, count(ur.id) as cantidadReportes,e.id as idEstado, e.nombre_estado FROM usuarios u INNER JOIN estados e on u.estado = e.id LEFT JOIN usuario_reportes ur on u.idusuario = ur.idusuario group by u.idusuario order by count(ur.id) desc;";
+            string sql = "SELECT u.idusuario, u.nombres, u.apellidos, u.correo, u.fotop, u.color, count(ur.id) as cantidadReportes,e.id as idEstado, e.nombre_estado FROM usuarios u INNER JOIN estados e on u.estado = e.id LEFT JOIN usuario_reportes ur on u.idusuario = ur.idusuario group by u.idusuario order by count(ur.id) desc;";
             return db.ConvertDataTabletoString(sql);
         }
 
         public string searchUsers( int searchNumber )
         {
-            string sql = $"select u.idusuario,u.nombres, u.apellidos, u.correo,count(ur.id) as cantidadReportes, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario group by u.idusuario having count(ur.id) = {searchNumber}; ";
+            string sql = $"select u.nombres, u.apellidos, u.correo,count(ur.id) as cantidadReportes, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario group by u.idusuario having count(ur.id) = {searchNumber}; ";
             return db.ConvertDataTabletoString(sql);
         }
         public string searchusers(string searchWord)
         {   
-            string sql = $"select concat(u.nombres, ' ' ,u.apellidos) as nombreCompleto, u.correo,count(ur.id) as cantidadReportes, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario where concat(u.nombres, ' ', u.apellidos) like '{searchWord}%' or u.correo like '{searchWord}%' or e.nombre_estado like '{searchWord}%' group by u.idusuario; ";
+            string sql = $"select u.nombres, u.apellidos, u.correo,count(ur.id) as cantidadReportes, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario where u.nombres like '{searchWord}%' or u.apellidos like '{searchWord}%' or concat(u.nombres, ' ', u.apellidos) like '{searchWord}%' or  u.correo like '{searchWord}%' or e.nombre_estado like '{searchWord}%' group by u.idusuario; ";
             return db.ConvertDataTabletoString(sql);
         }
 
