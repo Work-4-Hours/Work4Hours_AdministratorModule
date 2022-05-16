@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
     [ApiController]
     public class SearchUsersController : ControllerBase
     {
+        Users user = new Users();
         // GET: api/<SearchUsersController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -28,8 +30,21 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
 
         // POST api/<SearchUsersController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public string Post([FromQuery] string value)
         {
+            return user.searchusers(value);
+        }
+
+        [HttpPost("/busquedaGeneralReportes")]
+        public string PostReportes([FromQuery] int value)
+        {
+            return user.searchUsers(value);
+        }
+
+        [HttpPost("/busqueda/filter")]
+        public string PostFilter([FromQuery] int value, string word)
+        {
+            return user.searchUsersFilters(value, word);
         }
 
         // PUT api/<SearchUsersController>/5

@@ -35,9 +35,10 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
         }
 
         // PUT api/<UsersController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public string Put([FromBody] List<ChangeState> array)
         {
+            return user.suspencionUsers(array);
         }
 
         // DELETE api/<UsersController>/5

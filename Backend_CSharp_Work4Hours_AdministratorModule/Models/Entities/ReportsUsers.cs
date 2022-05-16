@@ -31,7 +31,7 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
 
         public string reportsUsers(int idusuario)
         {
-            string sql = $"select r.nombrereporte, count(ur.id) as cantidadReportes from reportes r inner join usuario_reportes ur on r.idreporte=ur.idreporte inner join usuarios u on ur.idusuario=u.idusuario where u.idusuario={idusuario} group by r.nombrereporte;";
+            string sql = $"select r.idreporte,r.nombrereporte, count(ur.id) as cantidadReportes from reportes r inner join usuario_reportes ur on r.idreporte=ur.idreporte inner join usuarios u on ur.idusuario=u.idusuario where u.idusuario={idusuario} group by r.nombrereporte;";
             return db.ConvertDataTabletoString(sql);
         }
     }
