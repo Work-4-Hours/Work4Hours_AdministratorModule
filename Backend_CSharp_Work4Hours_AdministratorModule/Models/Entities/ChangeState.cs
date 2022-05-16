@@ -9,6 +9,7 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
         private int _idUsuario;
         private string _fotoUser;
         private string _color;
+        private string _nombres;
 
         public int IdEstado
         {
@@ -38,6 +39,12 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
         {
             get { return _color; }
             set { _color = value; }
+        }
+
+        public string Nombres
+        {
+            get { return _nombres; }
+            set { _nombres = value; }
         }
     }
 }
