@@ -14,7 +14,7 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models
 
         public DataBase()
         {
-            connection = new MySqlConnection("datasource=bgeztpvckg0lxhnhjorg-mysql.services.clever-cloud.com; port=3306; username=urz9oici6joy6gog;password=dMxPboxqGHD4ik5Sv8mu;database=bgeztpvckg0lxhnhjorg;SSLMode=none");
+            connection = new MySqlConnection("datasource=w4h-database.cw9ejgkmfeqy.us-east-1.rds.amazonaws.com; port=3306; username=w4hadmin;password=work4hours;database=work4hours;SSLMode=none");
         }
 
         public string ejecuteSQL(string sql)
