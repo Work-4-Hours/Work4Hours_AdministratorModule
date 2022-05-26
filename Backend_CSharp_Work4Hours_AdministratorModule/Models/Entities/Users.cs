@@ -56,18 +56,18 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
 
         public string listUsers()
         {
-            string sql = "SELECT u.idusuario, u.nombres, u.apellidos, u.correo, case when u.fotop is null then '' else u.fotop end as fotop, u.color, count(ur.id) as cantidadReportes, e.id as idEstado, e.nombre_estado FROM usuarios u INNER JOIN estados e on u.estado = e.id LEFT JOIN usuario_reportes ur on u.idusuario = ur.idusuario group by u.idusuario order by count(ur.id) desc;" ;
+            string sql = "SELECT u.idusuario, SUBSTRING_INDEX(u.nombres, ' ', 1) as nombreUsuario, u.apellidos, u.correo, case when u.fotop is null then '' else u.fotop end as fotop, u.color, count(ur.id) as cantidadReportes, e.id as idEstado, e.nombre_estado FROM usuarios u INNER JOIN estados e on u.estado = e.id LEFT JOIN usuario_reportes ur on u.idusuario = ur.idusuario group by u.idusuario order by count(ur.id) desc;";
             return db.ConvertDataTabletoString(sql);
         }
 
         public string searchUsers( int searchNumber )
         {
-            string sql = $"select u.idusuario, u.nombres, u.apellidos, u.correo, case when u.fotop is null then '' else u.fotop end as fotop, u.color, count(ur.id) as cantidadReportes, e.id as idEstado, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario group by u.idusuario having count(ur.id) = {searchNumber}; ";
+            string sql = $"select u.idusuario, SUBSTRING_INDEX(u.nombres, ' ', 1) as nombreUsuario, u.apellidos, u.correo, case when u.fotop is null then '' else u.fotop end as fotop, u.color, count(ur.id) as cantidadReportes, e.id as idEstado, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario group by u.idusuario having count(ur.id) = {searchNumber}; ";
             return db.ConvertDataTabletoString(sql);
         }
         public string searchusers(string searchWord)
         {   
-            string sql = $"select u.idusuario, u.nombres, u.apellidos, u.correo, case when u.fotop is null then '' else u.fotop end as fotop, u.color, count(ur.id) as cantidadReportes, e.id as idEstado, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario where u.nombres like '{searchWord}%' or u.apellidos like '{searchWord}%' or concat(u.nombres, ' ', u.apellidos) like '{searchWord}%' or  u.correo like '{searchWord}%' or e.nombre_estado like '{searchWord}%' group by u.idusuario; ";
+            string sql = $"select u.idusuario, SUBSTRING_INDEX(u.nombres, ' ', 1) as nombreUsuario, u.apellidos, u.correo, case when u.fotop is null then '' else u.fotop end as fotop, u.color, count(ur.id) as cantidadReportes, e.id as idEstado, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario where u.nombres like '{searchWord}%' or u.apellidos like '{searchWord}%' or concat(u.nombres, ' ', u.apellidos) like '{searchWord}%' or  u.correo like '{searchWord}%' or e.nombre_estado like '{searchWord}%' group by u.idusuario; ";
             return db.ConvertDataTabletoString(sql);
         }
 
@@ -76,19 +76,19 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
             string sql = "";
             if (option == 1)
             {
-                sql = $"select u.idusuario, u.nombres, u.apellidos, u.correo, case when u.fotop is null then '' else u.fotop end as fotop, u.color, count(ur.id) as cantidadReportes, e.id as idEstado, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario where e.nombre_estado like '{searchWord}%' group by u.idusuario";
+                sql = $"select u.idusuario, SUBSTRING_INDEX(u.nombres, ' ', 1) as nombreUsuario, u.apellidos, u.correo, case when u.fotop is null then '' else u.fotop end as fotop, u.color, count(ur.id) as cantidadReportes, e.id as idEstado, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario where e.nombre_estado like '{searchWord}%' group by u.idusuario";
             }
             else if (option == 2)
             {
-                sql = $"select u.idusuario, u.nombres, u.apellidos, u.correo, case when u.fotop is null then '' else u.fotop end as fotop, u.color, count(ur.id) as cantidadReportes, e.id as idEstado, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario group by u.idusuario having count(ur.id) = {Convert.ToInt32(searchWord)};";
+                sql = $"select u.idusuario, SUBSTRING_INDEX(u.nombres, ' ', 1) as nombreUsuario, u.apellidos, u.correo, case when u.fotop is null then '' else u.fotop end as fotop, u.color, count(ur.id) as cantidadReportes, e.id as idEstado, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario group by u.idusuario having count(ur.id) = {Convert.ToInt32(searchWord)};";
             }
             else if (option == 3)
             {
-                sql = $"select u.idusuario, u.nombres, u.apellidos, u.correo, case when u.fotop is null then '' else u.fotop end as fotop, u.color, count(ur.id) as cantidadReportes, e.id as idEstado, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario where u.correo like '{searchWord}%' group by u.idusuario; ";
+                sql = $"select u.idusuario, SUBSTRING_INDEX(u.nombres, ' ', 1) as nombreUsuario, u.apellidos, u.correo, case when u.fotop is null then '' else u.fotop end as fotop, u.color, count(ur.id) as cantidadReportes, e.id as idEstado, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario where u.correo like '{searchWord}%' group by u.idusuario; ";
             }
             else if (option == 4)
             {
-                sql = $"select u.idusuario, u.nombres, u.apellidos, u.correo, case when u.fotop is null then '' else u.fotop end as fotop, u.color, count(ur.id) as cantidadReportes, e.id as idEstado, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario where concat(u.nombres, ' ', u.apellidos) like '%{searchWord}%' group by u.idusuario;";
+                sql = $"select u.idusuario, SUBSTRING_INDEX(u.nombres, ' ', 1) as nombreUsuario, u.apellidos, u.correo, case when u.fotop is null then '' else u.fotop end as fotop, u.color, count(ur.id) as cantidadReportes, e.id as idEstado, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario where concat(u.nombres, ' ', u.apellidos) like '%{searchWord}%' group by u.idusuario;";
             }
             return db.ConvertDataTabletoString(sql);
         }
