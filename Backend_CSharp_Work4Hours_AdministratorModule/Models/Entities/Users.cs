@@ -93,7 +93,7 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
             return db.ConvertDataTabletoString(sql);
         }
 
-        public string suspencionUsers(List<ChangeState> array)
+        public string suspensionUsers(List<ChangeStateUser> array)
         {
             string sql = " ";
             for (int i=0; i<array.Count;i++)

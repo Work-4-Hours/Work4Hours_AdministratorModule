@@ -2,7 +2,7 @@
 
 namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
 {
-    public class ChangeState
+    public class ChangeStateUser
     {
         private int _idEstado;
         private string _email;
