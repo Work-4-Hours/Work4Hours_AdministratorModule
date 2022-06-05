@@ -2,14 +2,15 @@
 
 namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
 {
-    public class ChangeStateUser
+    public class ChangeState
     {
         private int _idEstado;
         private string _email;
-        private int _idUsuario;
+        private int _id;
         private string _fotoUser;
         private string _color;
         private string _nombres;
+        private string _nombreServicio;
 
         public int IdEstado
         {
@@ -23,10 +24,10 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
             set { _email = value; }
         }
 
-        public int IdUsuario
+        public int Id
         {
-            get { return _idUsuario; }
-            set { _idUsuario = value; }
+            get { return _id; }
+            set { _id = value; }
         }
 
         public string fotoUser
@@ -45,6 +46,12 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
         {
             get { return _nombres; }
             set { _nombres = value; }
+        }
+
+        public string NombreServicio
+        {
+            get { return _nombreServicio; }
+            set { _nombreServicio = value; }
         }
     }
 }

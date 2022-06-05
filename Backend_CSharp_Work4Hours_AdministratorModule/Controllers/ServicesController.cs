@@ -36,7 +36,7 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
 
         // PUT api/<ServicesController>/5
         [HttpPut]
-        public string Put([FromBody] List<ChangeStateService> array)
+        public string Put([FromBody] List<ChangeState> array)
         {
             return service.suspensionServices(array);
         }

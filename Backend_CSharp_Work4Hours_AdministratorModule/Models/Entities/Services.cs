@@ -88,12 +88,12 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
             return db.ConvertDataTabletoString (sql);
         }
 
-        public string suspensionServices(List<ChangeStateService> array)
+        public string suspensionServices(List<ChangeState> array)
         {
             string sql = " ";
             for (int i = 0; i < array.Count; i++)
             {
-                sql = $"update servicios set estado = {array[i].IdEstado} where idservicio = {array[i].IdServicio};";
+                sql = $"update servicios set estado = {array[i].IdEstado} where idservicio = {array[i].Id};";
                 db.ejecuteSQL(sql);
             }
             return db.ejecuteSQL(sql);
