@@ -16,9 +16,9 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
        ReportsServices rs = new ReportsServices();
         // GET: api/<SearchServicesController>
         [HttpGet]
-        public string Get([FromQuery] int idservicio)
+        public string Get([FromQuery] int id)
         {
-            return rs.reportsServices(idservicio);
+            return rs.reportsServices(id);
         }
 
         // GET api/<ReportsServicesController>/5
