@@ -41,6 +41,12 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
             return service.searchservices(value);
         }
 
+        [HttpPost("/searchServices/filter")]
+        public string PostFilter([FromQuery] int value, string word)
+        {
+            return service.searchServicesFilter(value, word);
+        }
+
         // PUT api/<SearchServicesController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
