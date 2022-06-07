@@ -35,7 +35,7 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
             return service.searchServices(value);
         }
 
-        [HttpPost("/busquedaGeneralReportesServicios")]
+        [HttpPost("/generalSearchReportsServices")]
         public string PostReports([FromQuery] int value)
         {
             return service.searchservices(value);
