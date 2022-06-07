@@ -7,7 +7,6 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
 {
     public class Reports
     {
-        DataBase db = new DataBase();
         private int _idreporte;
         private string _nombrereporte;
 
@@ -21,12 +20,6 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
         {
             get { return _nombrereporte; }
             set { _nombrereporte = value; }
-        }
-
-        public string typesReports()
-        {
-            string sql = "SELECT idreporte,nombrereporte FROM reportes;";
-            return db.ConvertDataTabletoString(sql);
         }
     }
 }
