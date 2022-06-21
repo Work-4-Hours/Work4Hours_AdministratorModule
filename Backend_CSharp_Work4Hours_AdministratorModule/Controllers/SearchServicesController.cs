@@ -14,19 +14,6 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
     public class SearchServicesController : ControllerBase
     {
         Services service = new Services();
-        // GET: api/<SearchServicesController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<SearchServicesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
 
         // POST api/<SearchServicesController>
         [HttpPost]
@@ -45,18 +32,6 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
         public string PostFilter([FromQuery] int value, string word)
         {
             return service.searchServicesFilter(value, word);
-        }
-
-        // PUT api/<SearchServicesController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<SearchServicesController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

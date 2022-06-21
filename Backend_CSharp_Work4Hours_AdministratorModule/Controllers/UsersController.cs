@@ -21,30 +21,11 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
             return user.listUsers();
         }
 
-        // GET api/<UsersController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<UsersController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
         // PUT api/<UsersController>/5
         [HttpPut]
         public string Put([FromBody] List<ChangeState> array)
         {
             return user.suspensionUsers(array);
-        }
-
-        // DELETE api/<UsersController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

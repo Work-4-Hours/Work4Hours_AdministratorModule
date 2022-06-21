@@ -62,7 +62,7 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
 
         public string searchUsers( int searchNumber )
         {
-            string sql = $"select u.idusuario n, SUBSTRING_INDEX(u.nombres, ' ', 1) as nombreUsuario, u.apellidos, u.correo, case when u.fotop is null then '' else u.fotop end as fotop, u.color, count(ur.id) as cantidadReportes, e.id as idEstado, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario group by u.idusuario having count(ur.id) = {searchNumber}; ";
+            string sql = $"select u.idusuario, SUBSTRING_INDEX(u.nombres, ' ', 1) as nombreUsuario, u.apellidos, u.correo, case when u.fotop is null then '' else u.fotop end as fotop, u.color, count(ur.id) as cantidadReportes, e.id as idEstado, e.nombre_estado from usuarios u inner join estados e on u.estado = e.id left join usuario_reportes ur ON u.idusuario = ur.idusuario group by u.idusuario having count(ur.id) = {searchNumber}; ";
             return db.ConvertDataTabletoString(sql);
         }
         public string searchusers(string searchWord)
