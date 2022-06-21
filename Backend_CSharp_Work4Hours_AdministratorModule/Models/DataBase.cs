@@ -14,7 +14,7 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models
 
         public DataBase()
         {
-            connection = new MySqlConnection("datasource=work4hours-db.conkpkcjiuon.us-east-2.rds.amazonaws.com; port=3306; username=db_admin;password=DCMMLwork4hours;database=sys;SSLMode=none");
+            connection = new MySqlConnection("datasource=work4hours.cw9ejgkmfeqy.us-east-1.rds.amazonaws.com; port=3306; username=w4hadmin;password=DCMMLwork4hours;database=work4hours;SSLMode=none");
         }
 
         public string ejecuteSQL(string sql)
