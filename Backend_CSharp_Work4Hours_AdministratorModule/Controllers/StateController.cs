@@ -20,31 +20,5 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
         {
             return st.nameState();
         }
-
-        // GET api/<StateController>/5
-        [HttpGet("{id}")]
-
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<StateController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<StateController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<StateController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

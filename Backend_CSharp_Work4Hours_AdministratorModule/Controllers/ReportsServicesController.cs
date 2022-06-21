@@ -20,30 +20,5 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Controllers
         {
             return rs.reportsServices(id);
         }
-
-        // GET api/<ReportsServicesController>/5
-        /*[HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }*/
-
-        // POST api/<ReportsServicesController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<ReportsServicesController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ReportsServicesController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }
