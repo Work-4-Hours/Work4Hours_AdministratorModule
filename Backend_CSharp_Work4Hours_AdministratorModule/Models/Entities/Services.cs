@@ -13,7 +13,6 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
         private string _descripcion;
 
         private State _estado;
-        private Appeal _apelacion;
         private Users _usuario;
 
         public int Idservicio
@@ -38,12 +37,6 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
         {
             get { return _estado; }
             set { _estado = value; }
-        }
-
-        public Appeal Apelacion
-        {
-            get { return _apelacion; }
-            set { _apelacion = value; }
         }
 
         public Users Usuario
