@@ -16,7 +16,6 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
         private string _fotop;
 
         private State _estado;
-        /*private Roles _rol;*/
 
         public int Idusuario
         {
