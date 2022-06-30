@@ -98,7 +98,7 @@ namespace Backend_CSharp_Work4Hours_AdministratorModule.Models.Entities
             string sql = " ";
             for (int i=0; i<array.Count;i++)
             { 
-                sql = $"update usuarios set estado = {array[i].IdEstado} where idusuario = {array[i].Id};";
+                sql = $"update usuarios set estado = {array[i].IdStatus} where idusuario = {array[i].Id};";
                 db.ejecuteSQL(sql);
             }
             return db.ejecuteSQL(sql);
